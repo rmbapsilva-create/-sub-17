@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CDL Sub 17">
+<meta name="theme-color" content="#14492f">
+<title>CDL Sub 17 – Calendário 2026/27</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f3f5f1;--surface:#fff;--ink:#16211b;--muted:#5d6b62;--line:#d9e0d8;--green:#14492f;--green-ink:#fff;--home:#14492f;--away:#8a5a00;--away-bg:#fff1d1;--home-bg:#dcefe3;--cup:#2d4a8a;--cup-bg:#e1e8f8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1712;--surface:#18231c;--ink:#e8efe9;--muted:#9fb0a5;--line:#2a3a30;--green:#1d6b45;--home:#7fd3a3;--away:#f0c36a;--away-bg:#3a2e12;--home-bg:#17352432;--cup:#a9c0f5;--cup-bg:#1f2b4a}}
+:root[data-theme="dark"]{--bg:#0f1712;--surface:#18231c;--ink:#e8efe9;--muted:#9fb0a5;--line:#2a3a30;--green:#1d6b45;--home:#7fd3a3;--away:#f0c36a;--away-bg:#3a2e12;--home-bg:#173524;--cup:#a9c0f5;--cup-bg:#1f2b4a}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Barlow,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 40px}
+header{padding:20px 0 8px}
+header h1{margin:0;font:700 28px/1.1 "Barlow Condensed",Barlow,sans-serif;letter-spacing:.2px}
+header p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.next{margin:14px 0 18px;background:var(--green);color:var(--green-ink);border-radius:14px;padding:18px;display:flex;gap:16px;align-items:center}
+.next .big{font:700 64px/0.9 "Barlow Condensed",sans-serif;min-width:72px;text-align:center}
+.next .big small{display:block;font:600 16px/1.2 Barlow,sans-serif;margin-top:6px;opacity:.85}
+.next .info{border-left:1px solid rgba(255,255,255,.3);padding-left:16px}
+.next .lbl{font-size:13px;opacity:.85}
+.next .t{font:700 24px/1.15 "Barlow Condensed",sans-serif;margin:2px 0}
+.next .sub{font-size:14px;opacity:.9}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:2}
+.chips button{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 14px Barlow,sans-serif;padding:8px 14px;border-radius:999px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--green);color:var(--green-ink);border-color:var(--green)}
+.chips button:focus-visible,.theme:focus-visible{outline:3px solid #e0a800;outline-offset:2px}
+h2{font:700 20px/1 "Barlow Condensed",sans-serif;margin:22px 0 8px;color:var(--muted)}
+.row{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.row.past{opacity:.5}
+.row.is-next{border-color:var(--green);box-shadow:0 0 0 2px var(--green)}
+.d{text-align:center;font:700 26px/1 "Barlow Condensed",sans-serif}
+.d small{display:block;font:500 12px Barlow,sans-serif;color:var(--muted);margin-top:2px}
+.opp{font-weight:600}
+.meta{font-size:13px;color:var(--muted)}
+.tag{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.tag.home{background:var(--home-bg);color:var(--home)}
+.tag.away{background:var(--away-bg);color:var(--away)}
+.tag.cup{background:var(--cup-bg);color:var(--cup)}
+.empty{color:var(--muted);padding:20px 0}
+.theme{margin-top:24px;background:none;border:1px solid var(--line);color:var(--muted);padding:8px 14px;border-radius:8px;font:500 14px Barlow,sans-serif;cursor:pointer}
+.hint{font-size:13px;color:var(--muted);margin-top:18px}
+.row{cursor:pointer}
+.row:focus-visible{outline:3px solid #e0a800;outline-offset:2px}
+.note{grid-column:2/4;font-size:13px;font-style:italic;color:var(--ink);border-top:1px dashed var(--line);padding-top:6px;white-space:pre-wrap}
+.row.moved .d{color:var(--away)}
+:root{--lose:#a12a1c;--lose-bg:#f8d9d5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--lose:#f09a8d;--lose-bg:#3d1c18}}
+:root[data-theme="dark"]{--lose:#f09a8d;--lose-bg:#3d1c18}
+.sum{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 6px}
+.sum div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 4px;text-align:center}
+.sum b{display:block;font:700 30px/1 "Barlow Condensed",sans-serif}
+.sum span{font-size:12px;color:var(--muted)}
+.sum .w b{color:var(--home)}.sum .l b{color:var(--lose)}
+.goals{font-size:13px;color:var(--muted);margin:0 0 14px;text-align:center}
+.score{font:700 20px/1 "Barlow Condensed",sans-serif;margin-right:8px;vertical-align:middle}
+.tag.w{background:var(--home-bg);color:var(--home)}.tag.dr{background:var(--away-bg);color:var(--away)}.tag.l{background:var(--lose-bg);color:var(--lose)}
+.scr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);width:min(92vw,420px);padding:18px}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+.dh{font:700 22px/1.1 "Barlow Condensed",sans-serif;margin-bottom:12px}
+dialog label{display:block;font-size:13px;color:var(--muted);margin-bottom:10px}
+dialog input,dialog select,dialog textarea{display:block;width:100%;margin-top:4px;padding:9px;font:16px Barlow,sans-serif;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.acts button{flex:1;min-width:90px;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 14px Barlow,sans-serif;cursor:pointer}
+.acts #bs{background:var(--green);color:var(--green-ink);border-color:var(--green)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>CDL · Sub 17</h1><p>Honra, Sul · Associação de Futebol de Aveiro 2026/27</p></header>
+<div id="next"></div>
+<div id="sum"></div>
+<div class="chips" role="group" aria-label="Filtrar">
+<button data-f="all" aria-pressed="true">Todos</button>
+<button data-f="home" aria-pressed="false">Em casa</button>
+<button data-f="away" aria-pressed="false">Fora</button>
+</div>
+<main id="list"></main>
+<p class="hint">Toca num jogo para pôr o resultado, mudar o dia ou escrever notas. As alterações e notas ficam guardadas só neste telemóvel. Para instalar: no menu do navegador escolhe “Adicionar ao ecrã principal”.</p>
+<button class="theme" id="theme">Mudar tema</button>
+</div>
+<dialog id="dlg"><div class="dh" id="dtitle"></div>
+<label>Dia<input type="date" id="fd"></label>
+<label>Hora<input type="time" id="ft"></label>
+<div class="scr" id="sc"><label>Golos CDL<input type="number" min="0" inputmode="numeric" id="fg1"></label><label>Golos adversário<input type="number" min="0" inputmode="numeric" id="fg2"></label></div>
+<label id="lo">Adversário<input id="fo"></label>
+<label id="lh">Local<select id="fh"><option value="h">Em casa</option><option value="a">Fora</option></select></label>
+<label>Notas<textarea id="fn" rows="4" placeholder="Ex.: levar equipamento branco, concentração às 08:15"></textarea></label>
+<div class="acts"><button id="bs">Guardar</button><button id="br">Repor original</button><button id="bc">Cancelar</button></div></dialog>
+<script>
+var G=[
+["2026-09-27","09:00","Águeda B","h"],["2026-10-11","09:00","CB Albergaria","a"],["2026-10-18","09:00","Taboeira B","h"],
+["2026-10-25","09:00","Estarreja","a"],["2026-11-01","09:00","Soutelo","h"],["2026-11-08","09:00","Valongo","a"],
+["2026-11-15","09:00","Avanca","h"],["2026-11-21","14:00","Vista Alegre B","a"],["2026-11-29","09:00","Juveforce","h"],
+["2026-12-01","15:00","Anadia","a"],["2026-12-05","15:00","Severense","a"],["2026-12-13","09:00","Alba","h"],
+["2026-12-20","09:00","Gafanha B","a"],["2027-01-10","09:00","Águeda","a"],["2027-01-17","09:00","Anadia","h"],
+["2027-01-24","09:00","CB Albergaria","h"],["2027-01-30","15:30","Taboeira B","a"],["2027-02-07","09:00","Estarreja","h"],
+["2027-02-21","09:00","Soutelo","a"],["2027-02-28","09:00","Valongo","h"],["2027-03-07","09:00","Avanca","a"],
+["2027-03-14","09:00","Vista Alegre B","h"],["2027-04-04","09:00","Juveforce","a"],["2027-04-18","09:00","Severense","h"],
+["2027-05-02","09:00","Alba","a"],["2027-05-09","09:00","Gafanha B","h"],["2027-05-15","","Apuramento Campeão","","Fase final"]
+];
+
+var KEY="cdl-sub17-edits-v2",E={};
+try{E=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){E={};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(E));}catch(e){}}
+function eff(i){var g=G[i].slice(),o=E[i];if(o){if(o.d)g[0]=o.d;if(o.t!==undefined)g[1]=o.t;if(G[i][2]&&o.o)g[2]=o.o;if(G[i][3]&&o.h)g[3]=o.h;}g[5]=(o&&o.n)||"";g[6]=(o&&o.a!==undefined&&o.a!==""&&o.b!==undefined&&o.b!=="")?[+o.a,+o.b]:null;return g;}
+function res(g){if(!g[6]||!g[3])return "";return g[6][0]>g[6][1]?"w":g[6][0]<g[6][1]?"l":"dr";}
+function sc(g){return g[6]?(g[3]==="h"?g[6][0]+"–"+g[6][1]:g[6][1]+"–"+g[6][0]):"";}
+function renderSum(){var w=0,e=0,l=0,gm=0,gs=0;G.forEach(function(_,i){var g=eff(i),r=res(g);if(!r)return;if(r==="w")w++;else if(r==="l")l++;else e++;gm+=g[6][0];gs+=g[6][1];});$("sum").innerHTML='<div class="sum"><div class="w"><b>'+w+'</b><span>Vitórias</span></div><div><b>'+e+'</b><span>Empates</span></div><div class="l"><b>'+l+'</b><span>Derrotas</span></div><div><b>'+(w*3+e)+'</b><span>Pontos</span></div></div><p class="goals">'+(w+e+l)+' jogos · '+gm+' golos marcados · '+gs+' sofridos</p>';}
+function order(){var a=G.map(function(_,i){return i;});a.sort(function(x,y){var p=eff(x)[0],q=eff(y)[0];return p<q?-1:p>q?1:x-y;});return a;}
+var MESES=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+var DIAS=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
+var filter="all",editing=-1;
+function dt(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+function today(){var n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate());}
+function kind(g){return g[3]==="h"?"home":(g[3]==="a"?"away":"fin");}
+function title(g){if(g[3]==="h")return "CDL – "+g[2];if(g[3]==="a")return g[2]+" – CDL";return g[2]||g[4];}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function nextIdx(){var t=today(),o=order();for(var k=0;k<o.length;k++){if(dt(eff(o[k])[0])>=t)return o[k];}return -1;}
+function renderNext(){
+var i=nextIdx(),el=document.getElementById("next");
+if(i<0){el.innerHTML="";return;}
+var g=eff(i),d=dt(g[0]),diff=Math.round((d-today())/864e5);
+var when=diff===0?"Hoje":diff===1?"Amanhã":"Em "+diff+" dias";
+var sub=[DIAS[d.getDay()],g[1]].filter(Boolean).join(", ");
+var extra=g[4]?" · "+g[4]:"";
+el.innerHTML='<div class="next"><div class="big">'+d.getDate()+'<small>'+MESES[d.getMonth()].slice(0,3)+'</small></div><div class="info"><div class="lbl">Próximo · '+when+'</div><div class="t">'+esc(title(g))+'</div><div class="sub">'+esc(sub+extra)+'</div></div></div>';
+}
+function render(){
+renderSum();var t=today(),ni=nextIdx(),out="",cur="";
+order().forEach(function(i){
+var g=eff(i),k=kind(g);if(filter!=="all"&&filter!==k)return;
+var d=dt(g[0]),m=MESES[d.getMonth()]+" "+d.getFullYear();
+if(m!==cur){out+="<h2>"+m+"</h2>";cur=m;}
+var tag=g[3]==="h"?'<span class="tag home">Casa</span>':g[3]==="a"?'<span class="tag away">Fora</span>':"";
+var cup=g[4]?'<span class="tag cup">'+esc(g[4])+'</span>':"";
+var main=g[2]?esc(title(g)):esc(g[4]);
+var meta=[DIAS[d.getDay()],g[1]].filter(Boolean).join(", ");
+var rs=res(g),right=g[4]?cup:(rs?'<span class="score">'+sc(g)+'</span><span class="tag '+rs+'">'+{w:"V",dr:"E",l:"D"}[rs]+'</span>':tag);
+var moved=g[0]!==G[i][0];
+out+='<div class="row'+(d<t?" past":"")+(i===ni?" is-next":"")+(moved?" moved":"")+'" role="button" tabindex="0" data-i="'+i+'"><div class="d">'+d.getDate()+'<small>'+MESES[d.getMonth()].slice(0,3)+'</small></div><div><div class="opp">'+main+'</div><div class="meta">'+esc(meta)+(moved?" · dia alterado":"")+'</div></div><div>'+right+'</div>'+(g[5]?'<div class="note">'+esc(g[5])+'</div>':"")+'</div>';
+});
+document.getElementById("list").innerHTML=out||'<p class="empty">Não há jogos neste filtro.</p>';
+}
+function $(id){return document.getElementById(id);}
+function openEdit(i){
+editing=i;var g=eff(i);
+$("dtitle").textContent=title(g);
+$("fd").value=g[0];$("ft").value=g[1]||"";$("fo").value=G[i][2]?g[2]:"";$("fh").value=g[3]||"h";$("fn").value=g[5];
+$("lo").style.display=G[i][2]&&G[i][3]?"block":"none";
+$("lh").style.display=G[i][3]?"block":"none";
+$("sc").style.display=G[i][3]?"grid":"none";$("fg1").value=g[6]?g[6][0]:"";$("fg2").value=g[6]?g[6][1]:"";
+$("dlg").showModal();
+}
+$("list").addEventListener("click",function(e){var r=e.target.closest(".row");if(r)openEdit(+r.dataset.i);});
+$("list").addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){var r=e.target.closest(".row");if(r){e.preventDefault();openEdit(+r.dataset.i);}}});
+$("bc").addEventListener("click",function(){$("dlg").close();});
+$("bs").addEventListener("click",function(){
+var o={n:$("fn").value.trim()};
+if($("fd").value)o.d=$("fd").value;
+o.t=$("ft").value;
+if(G[editing][3]){o.a=$("fg1").value;o.b=$("fg2").value;}
+if(G[editing][2]&&$("fo").value.trim())o.o=$("fo").value.trim();
+if(G[editing][3])o.h=$("fh").value;
+E[editing]=o;save();$("dlg").close();renderNext();render();
+});
+$("br").addEventListener("click",function(){
+if(confirm("Repor o dia, hora e adversário originais e apagar o resultado e a nota deste jogo?")){delete E[editing];save();$("dlg").close();renderNext();render();}
+});
+document.querySelectorAll(".chips button").forEach(function(b){b.addEventListener("click",function(){
+filter=b.dataset.f;document.querySelectorAll(".chips button").forEach(function(x){x.setAttribute("aria-pressed",x===b);});render();});});
+$("theme").addEventListener("click",function(){
+var r=document.documentElement,dark=getComputedStyle(r).getPropertyValue("--bg").trim()==="#0f1712";
+r.setAttribute("data-theme",dark?"light":"dark");});
+renderNext();render();
+</script>
+</body>
+</html>
